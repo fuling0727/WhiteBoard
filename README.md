@@ -10,6 +10,7 @@ This application is a drawing tool similar to Microsoft Painter. The function in
 5. Drawing Tools: Spray paint / Line / Square / Eraser / Clear All
 6. Drawing Effects: Color palette / Thickness slider / Density slider
 
+### UI Preview
 ![spraypaintapp](https://github.com/fuling0727/SprayPaint/assets/56348828/e4b8eaa8-9651-4bd2-9115-d61bf086af0c)
 
 ## References
