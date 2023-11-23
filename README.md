@@ -17,7 +17,8 @@ This application is a drawing tool similar to Microsoft Painter. The function in
 2. https://learn.microsoft.com/en-us/dotnet/desktop/wpf/controls/panels-overview?view=netframeworkdesktop-4.8
 3. https://learn.microsoft.com/en-us/dotnet/api/system.windows.media.hittestresultbehavior?view=windowsdesktop-7.0
 4. https://learn.microsoft.com/en-us/dotnet/api/system.windows.media.geometryhittestparameters?view=windowsdesktop-7.0
-5. https://learn.microsoft.com/en-us/dotnet/api/system.windows.media.ellipsegeometry?view=windowsdesktop-7.0
-6. https://stackoverflow.com/questions/10470841/easiest-way-of-saving-wpf-image-control-to-a-file
-7. https://www.newtonsoft.com/json/help/html/Overload_Newtonsoft_Json_JsonConvert_DeserializeObject.htm
-8. Icon Resources: https://icons8.com/
+5. https://learn.microsoft.com/en-us/dotnet/desktop/wpf/graphics-multimedia/how-to-paint-an-area-with-a-radial-gradient?view=netframeworkdesktop-4.8
+6. https://learn.microsoft.com/en-us/dotnet/api/system.windows.media.ellipsegeometry?view=windowsdesktop-7.0
+7. https://stackoverflow.com/questions/10470841/easiest-way-of-saving-wpf-image-control-to-a-file
+8. https://www.newtonsoft.com/json/help/html/Overload_Newtonsoft_Json_JsonConvert_DeserializeObject.htm
+9. Icon Resources: https://icons8.com/
