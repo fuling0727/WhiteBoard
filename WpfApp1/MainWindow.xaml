@@ -1,0 +1,128 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <DockPanel LastChildFill="True">
+        <!-- Upper bar for saving and uploading image -->
+        <ToolBar DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+            <Button Name="uploadImageBtn" BorderBrush="Gray"  BorderThickness="1" Click="uploadImgOnClick " 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Width="80">
+                <StackPanel  Orientation="Horizontal">
+                    <Image Source="/Icon/upload.png"  Stretch="Uniform" Width="15" Height="15" />
+                    <TextBlock>Upload</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Name="saveImageBtn"  BorderBrush="Gray" BorderThickness="1" Click="saveCanvasOnClick" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Width="80">
+                <StackPanel  Orientation="Horizontal">
+                    <Image Source="/Icon/save_as.png"  Stretch="Uniform" Width="15" Height="15" />
+                    <TextBlock>Save</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Name="loadPaintingBtn"  BorderBrush="Gray" BorderThickness="1" Click="loadPaintingOnClick" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Width="80">
+                <StackPanel  Orientation="Horizontal">
+                    <Image Source="/Icon/reload.png"  Stretch="Uniform" Width="15" Height="15" />
+                    <TextBlock>Reload</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Name="downloadImageBtn"  BorderBrush="Gray" BorderThickness="1" Click="downloadImgOnClick" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Width="80">
+                <StackPanel  Orientation="Horizontal">
+                    <Image Source="/Icon/download.png"  Stretch="Uniform" Width="15" Height="15" />
+                    <TextBlock>Download</TextBlock>
+                </StackPanel>
+            </Button>
+
+            <!-- Other toolbar items can be added here -->
+        </ToolBar>
+
+        <!-- Left bar for selecting drawing tools and colors -->
+        <StackPanel  DockPanel.Dock="RIght" Width="200">
+            <Label Content="Tools" Padding="5" />
+            <StackPanel Orientation="Horizontal">
+                
+                <Button Name ="ClearAllBtn" Content="Clear All" Click="ClearAllButton_Click"/>
+
+
+            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+
+                </Grid.ColumnDefinitions>
+
+
+                <Button Grid.Column="0" Name="SprayBtn" Background="LightGray" Click="SprayButton_Click" Tag="Spray">
+                    <Image Source="Icon/spray.png" Width="25" Height="25"/>
+                </Button>
+                <Button Grid.Column="1" Name="LineBtn" Background="LightGray" Click="LineButton_Click" Tag="Line">
+                    <Image Source="Icon/line.png" Width="25" Height="25"/>
+                </Button>
+                <Button Grid.Column="2" Name="SquareBtn" Background="LightGray" Click="SquareButton_Click" Tag="Square">
+                    <Image Source="Icon/square.png" Width="25" Height="25"/>
+                </Button>
+                <Button Grid.Column="3" Name="EraseBtn" Background="LightGray" Click="EraserButton_Click" Tag="Eraser">
+                    <Image Source="Icon/eraser.png" Width="25" Height="25"/>
+                </Button>
+
+
+            </Grid>
+
+            <StackPanel>
+
+                <Border Background="{Binding SelectedThickness}" Height="50" Margin="10"/>
+                <TextBlock Text="Thickness" Margin="5"/>
+                <Slider Maximum="4" TickFrequency="1" Name="ThicknessSlider" ValueChanged="GetValueThicknessSlider" IsSnapToTickEnabled="True"/>
+
+                <TextBlock Text="Density" Margin="5"/>
+                <Slider Maximum="3" TickFrequency="1" Name="DensitySlider" ValueChanged="GetValueDensitySlider" IsSnapToTickEnabled="True"/>
+
+            </StackPanel>
+
+            <Separator />
+            <!-- Color selection btn -->
+            <Grid>
+                <ItemsControl ItemsSource="{Binding ColorsPalette}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Width="35" Height="35" 
+                    
+                    Background="{Binding}" 
+                    Tag="{Binding}" 
+                    Click="ColorButton_Click"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Rows="3" Columns="6"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </Grid>
+
+
+
+        </StackPanel>
+
+        <!-- Central panel for showing the image and modifying the image -->
+        <Grid  Background="LightGray" DockPanel.Dock="Right" Margin="5">
+            <Image Name="ImageViewer" Stretch="Uniform" />
+            <Canvas Name="DrawingCanvas" Background="Transparent" MouseDown="Canvas_MouseDown"
+                    MouseMove="Canvas_MouseMove" MouseUp="Canvas_MouseUp">
+                <!-- Drawings will be rendered here -->
+            </Canvas>
+            <!-- Additional UI elements for image manipulation can be added here -->
+        </Grid>
+    </DockPanel>
+
+
+</Window>
