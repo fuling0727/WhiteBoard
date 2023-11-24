@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ukNLR6yQEsVL96y9QF8zAU8AKRuH2XsmeWejNv7VP2qw5XYbCFTgGQY7zyNDtfTzjppE19q4PFfUpD6s2FaN2A==",
+  "dgSpecHash": "/2EHtPZxEeNz//7MfeTKUKcSnXAl+/cnWfjhppa2aoiasupovilYv48+ILj18WEFvRy3gyZB2R67vNppeIgSZw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\GameToGo\\source\\repos\\SprayPaint\\WpfApp1\\WpfApp1.csproj",
+  "projectFilePath": "C:\\Users\\GameToGo\\source\\repos\\WpfApp1\\WpfApp1\\WpfApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GameToGo\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],

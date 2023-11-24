@@ -23,9 +23,9 @@ using System.Globalization;
 namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Store every drawing info in CnavasInfo
     /// </summary>
-    
+
     public class CanvasInfo
     {
         public List<Paint> Paints { get; set; }
@@ -33,7 +33,7 @@ namespace WpfApp1
         public List<SquareInfo> Squares { get; set; }
         public string ImageFilePath { get; set; }
     }
-
+    // spray paint Info 
     public class Paint
     {
         public double X { get; set; }
@@ -64,8 +64,8 @@ namespace WpfApp1
 
     public class SquareInfo
     {
-        public double X { get; set; } // X-coordinate of the top-left corner
-        public double Y { get; set; } // Y-coordinate of the top-left corner
+        public double X { get; set; } // top-left coordinations
+        public double Y { get; set; } 
         public double Size { get; set; }
         public string Color { get; set; }
         public double Thickness { get; set; }
@@ -89,15 +89,15 @@ namespace WpfApp1
         private string uploadImgFilePath;
         private string appDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
-        private readonly SolidColorBrush originalColor = new SolidColorBrush(Colors.LightGray); 
-        private readonly SolidColorBrush selectedColor = new SolidColorBrush(Colors.Gray);
-        private Button currentTool = null;
-        private Line currentLine;
-        private System.Windows.Point SquarestartPoint;
-        private System.Windows.Shapes.Rectangle currentSquare;
+        private readonly SolidColorBrush originalColor = new SolidColorBrush(Colors.LightGray); //Color palette btn orginal color
+        private readonly SolidColorBrush selectedColor = new SolidColorBrush(Colors.Gray); // Color palette btn after selecting
+        private Button currentTool = null; //current Drawing Tool
+        private Line currentLine; //current drawing line
+        private System.Windows.Point SquarestartPoint; // curent starting point for drawing square
+        private System.Windows.Shapes.Rectangle currentSquare; // current drawing square
 
 
-        SolidColorBrush brush = new SolidColorBrush();
+        SolidColorBrush brush = new SolidColorBrush(); // brush color setting
 
 
 
@@ -225,6 +225,7 @@ namespace WpfApp1
         //Event handler for loading previous works to canvas
         private void loadPaintingOnClick(object sender, RoutedEventArgs e)
         {
+
             string filePath = appDirectory + "\\paints_saving.json";
             Debug.WriteLine(filePath);
             if (File.Exists(filePath))
@@ -238,6 +239,7 @@ namespace WpfApp1
                         if(!string.IsNullOrEmpty(canvasData.ImageFilePath) && File.Exists(canvasData.ImageFilePath))
                         {
                             //Load Image if path are valid
+                            //Debug.WriteLine("hhhhhhh");
                             ImageViewer.Source = new BitmapImage(new Uri(canvasData.ImageFilePath));
                             uploadImgFilePath = canvasData.ImageFilePath;
                             isUploadImage = true;
@@ -275,25 +277,30 @@ namespace WpfApp1
 
                 DrawingCanvas.Children.Add(ellipse);
             }
-            foreach(var line in canvasData.Lines)
+            foreach(var lineInfo in canvasData.Lines)
             {
+                System.Windows.Media.Color color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineInfo.Color);
 
-                SolidColorBrush lineBrush = new SolidColorBrush(brush.Color);
+                SolidColorBrush lineBrush = new SolidColorBrush(color);
+                //Debug.WriteLine(lineInfo[""]);
                 Line l = new Line
                 {
                     Stroke = lineBrush,
-                    StrokeThickness = line.Thickness,
-                    X1 = line.StartPoint.X,
-                    Y1 = line.StartPoint.Y,
-                    X2 = line.EndPoint.X,
-                    Y2 = line.EndPoint.Y
+                    StrokeThickness = lineInfo.Thickness,
+                    X1 = lineInfo.StartPoint.X,
+                    Y1 = lineInfo.StartPoint.Y,
+                    X2 = lineInfo.EndPoint.X,
+                    Y2 = lineInfo.EndPoint.Y
 
                 };
                 DrawingCanvas.Children.Add(l);
             }
             foreach(var squareInfo in canvasData.Squares)
             {
-                SolidColorBrush lineBrush = new SolidColorBrush(brush.Color);
+                //Debug.WriteLine("square");
+                System.Windows.Media.Color color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(squareInfo.Color);
+
+                SolidColorBrush lineBrush = new SolidColorBrush(color);
                 System.Windows.Shapes.Rectangle squares = new System.Windows.Shapes.Rectangle
                 {
                     Stroke = lineBrush,
