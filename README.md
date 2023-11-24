@@ -13,6 +13,12 @@ This application is a drawing tool similar to Microsoft Painter. The function in
 ### UI Preview
 ![spraypaintapp](https://github.com/fuling0727/SprayPaint/assets/56348828/e4b8eaa8-9651-4bd2-9115-d61bf086af0c)
 
+### Demo Video
+
+
+https://github.com/fuling0727/SprayPaint/assets/56348828/d4ad4378-f177-4d7f-940b-b10532e4b443
+
+
 ## References
 1. https://learn.microsoft.com/en-us/dotnet/desktop/wpf/graphics-multimedia/painting-with-images-drawings-and-visuals?view=netframeworkdesktop-4.8
 2. https://learn.microsoft.com/en-us/dotnet/desktop/wpf/controls/panels-overview?view=netframeworkdesktop-4.8
