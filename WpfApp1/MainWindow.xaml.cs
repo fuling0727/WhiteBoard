@@ -23,7 +23,7 @@ using System.Globalization;
 namespace WpfApp1
 {
     /// <summary>
-    /// Store every drawing info in CnavasInfo
+    /// Store every drawing info in CnavasInfo in order to save the previous drawings to JSON file
     /// </summary>
 
     public class CanvasInfo
@@ -42,7 +42,7 @@ namespace WpfApp1
         public BrushInfo Brush { get; set; }
         
     }
-
+    // spray paint color brush
     public class BrushInfo
     {
         public List<GradientStopInfo> GradientStops { get; set; }
@@ -53,7 +53,7 @@ namespace WpfApp1
         public string Color { get; set; }
         public double Offset { get; set; }
     }
-
+    // drawing line info
     public class LineInfo
     {
         public System.Windows.Point StartPoint { get; set; }
@@ -61,7 +61,7 @@ namespace WpfApp1
         public double Thickness { get; set; }
         public string Color { get; set; }
     }
-
+    // drawing square info 
     public class SquareInfo
     {
         public double X { get; set; } // top-left coordinations
@@ -74,7 +74,6 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
 
-
         private bool isDrawing;
         private bool isErasing;
         private bool isUploadImage = false;
@@ -82,6 +81,7 @@ namespace WpfApp1
         private int thickness = 1;
         private int spraydensity = 1;
 
+        //Color palette
         public List<string> ColorsPalette { get; } = new List<string> { "White", "LightGray", "Gray", "Black", "DarkRed", "Red",
                                                                         "Coral", "Orange", "Beige", "Yellow", "LightGreen", "Green", 
                                                                         "LightBlue", "Blue", "DarkBlue",  "Purple", "Plum", "Pink"};
