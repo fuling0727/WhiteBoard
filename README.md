@@ -1,5 +1,5 @@
 # SprayPaint
-Tech Assignment of SprayPaint Application
+An application similar to Microsoft Painter
 
 ## Description
 This application is a drawing tool similar to Microsoft Painter. The function included:
